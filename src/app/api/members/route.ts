@@ -4,7 +4,7 @@ import { ObjectId } from 'mongodb'
 import { format } from 'date-fns'
 
 // WhatsApp Service URL
-const WHATSAPP_SERVICE_URL = 'http://localhost:3004'
+const WHATSAPP_SERVICE_URL = process.env.WHATSAPP_SERVICE_URL || 'http://localhost:3004'
 
 // Generate welcome message for new members
 function generateWelcomeMessage(member: {

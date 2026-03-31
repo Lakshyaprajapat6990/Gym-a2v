@@ -994,7 +994,7 @@ gymPlan: "1 Month",
               <ThemeToggle />
               
               {/* WhatsApp Status - Local only */}
-  {!isProduction && (
+              {!isProduction && (
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="hidden sm:flex">
                   <Button 
                     variant="outline" 
@@ -1021,33 +1021,6 @@ gymPlan: "1 Month",
                   </Button>
                 </motion.div>
               )}
-              {/* Prod note: WhatsApp disabled in production */}
-
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="hidden sm:flex">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={() => setIsQRDialogOpen(true)}
-                    className={`backdrop-blur-sm border ${whatsappStatus.connected ? "border-lime-500/50 bg-lime-500/10 text-lime-400" : "border-cyan-500/30 bg-black/50 text-slate-400 hover:text-cyan-400"}`}
-                  >
-                    {whatsappStatus.connected ? (
-                      <>
-                        <Wifi className="w-4 h-4 mr-2 animate-pulse" />
-                        WhatsApp Ready
-                      </>
-                    ) : whatsappStatus.status === 'qr' ? (
-                      <>
-                        <QrCode className="w-4 h-4 mr-2 text-amber-400" />
-                        Scan QR
-                      </>
-                    ) : (
-                      <>
-                        <WifiOff className="w-4 h-4 mr-2" />
-                        WhatsApp Connect
-                      </>
-                    )}
-                  </Button>
-                </motion.div>
 
               
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="hidden md:flex">

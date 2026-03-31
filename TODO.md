@@ -1,26 +1,13 @@
-# Task Progress: Deploy & Fix Prod WhatsApp QR Issue
+# Production WhatsApp Fix Progress
+✅ Plan approved and implementing...
 
-## Approved Plan Steps:
-
-### 1. [✅] Create/update TODO.md
-### 2. [ ] Edit src/app/page.tsx - hide WhatsApp in prod
-### 3. [ ] Edit src/app/api/notifications/send/route.ts - prod disabled status
-### 4. [ ] Create README.md prod notes
-### 5. [ ] Test local
-### 6. [ ] Commit/push → Vercel redeploy
-### 7. [ ] Add DATABASE_URL Vercel dashboard
-### 8. [ ] Mark complete
-
-## Original TODO:
-- [x] Install deps
-- [x] Prisma generate
-- [x] Dev server
-- [x] Notification/WhatsApp services
-- [ ] Fix add member 400
-- [ ] Scan WhatsApp QR
-
-**Current: Prod QR fix in progress**
-
-Repo: https://github.com/Lakshyaprajapat6990/gym-management-app
-Vercel: https://a2v-gym-management.vercel.app
-
+## Remaining Steps from Plan:
+- [✅] 1. Create TODO.md with steps
+- [✅] 2. Read & understand files (page.tsx ✅, members/route.ts ✅, notifications/send/route.ts N/A - no hardcoded URLs)
+- [✅] 3. Edit src/app/page.tsx - remove duplicate WhatsApp button ✅
+- [✅] 4. Edit src/app/api/notifications/send/route.ts - prod checks + env URL (no changes needed)
+- [✅] 5. Edit src/app/api/members/route.ts - use env URL
+- [ ] 6. Update PROD-FIX-TODO.md progress
+- [ ] 7. Test locally with NODE_ENV=production
+- [ ] 8. Commit/push for Vercel redeploy
+- [ ] 9. Mark PROD-FIX-TODO.md complete
