@@ -132,9 +132,9 @@ export async function POST(request: NextRequest) {
     const memberId = result.insertedId.toString()
     console.log('✅ Member inserted successfully. ID:', memberId)
     
-    // Send welcome message on WhatsApp if number is provided
+// Send welcome message on WhatsApp if number is provided (local only)
     let welcomeStatus = null
-    if (body.whatsappNumber) {
+    if (body.whatsappNumber && process.env.NODE_ENV !== 'production') {
       try {
         const welcomeMessage = generateWelcomeMessage({
           name: body.name,

@@ -572,6 +572,7 @@ export default function GYMManagementSystem() {
     connected: false
   })
   const [isQRDialogOpen, setIsQRDialogOpen] = useState(false)
+  const isProduction = process.env.NODE_ENV === 'production'
   
   // Form state
   const [formData, setFormData] = useState({
@@ -993,6 +994,34 @@ gymPlan: "1 Month",
               <ThemeToggle />
               
               {/* WhatsApp Status - Local only */}
+  {!isProduction && (
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="hidden sm:flex">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => setIsQRDialogOpen(true)}
+                    className={`backdrop-blur-sm border ${whatsappStatus.connected ? "border-lime-500/50 bg-lime-500/10 text-lime-400" : "border-cyan-500/30 bg-black/50 text-slate-400 hover:text-cyan-400"}`}
+                  >
+                    {whatsappStatus.connected ? (
+                      <>
+                        <Wifi className="w-4 h-4 mr-2 animate-pulse" />
+                        WhatsApp Ready
+                      </>
+                    ) : whatsappStatus.status === 'qr' ? (
+                      <>
+                        <QrCode className="w-4 h-4 mr-2 text-amber-400" />
+                        Scan QR
+                      </>
+                    ) : (
+                      <>
+                        <WifiOff className="w-4 h-4 mr-2" />
+                        WhatsApp Connect
+                      </>
+                    )}
+                  </Button>
+                </motion.div>
+              )}
+              {/* Prod note: WhatsApp disabled in production */}
 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="hidden sm:flex">
                   <Button 
@@ -1551,7 +1580,8 @@ gymPlan: "1 Month",
       </Dialog>
 
       {/* QR Code Dialog */}
-      <Dialog open={isQRDialogOpen} onOpenChange={setIsQRDialogOpen}>
+      {!isProduction && (
+        <Dialog open={isQRDialogOpen} onOpenChange={setIsQRDialogOpen}>
         <DialogContent className="max-w-md bg-black/90 backdrop-blur-2xl border-cyan-500/30 shadow-[0_0_50px_rgba(0,255,255,0.2)]">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent">
